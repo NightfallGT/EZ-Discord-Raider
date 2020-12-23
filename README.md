@@ -5,7 +5,7 @@
 
 A script that I made that can raid discord servers. This script
 allows you to spam a text channel with any message
-you want to spam. 
+
 
 This tool should be used for EDUCATIONAL PURPOSES only. Only
 use this in your own discord server.
