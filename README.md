@@ -18,7 +18,7 @@ use this in your own discord server.
 ### paste your tokens
 
 a Discord token is unique indetifier. It can be useful for things like bots to use your account outside of the Discord client itself.
-
+It allows the script to send messages in your discord account.
 
 Put your discord account tokens in the tokens.txt
 file.  They should already be invited to the server that you are going
