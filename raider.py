@@ -1,12 +1,13 @@
 import discord
 from discord.ext import commands
+import requests
 import asyncio
 import os
 import time
 from colorama import init, Fore, Style
 
 init(convert=True)
-class DiscordRaid:
+class DiscordRaid():
 	def __init__(self, token , prefix= '?', loop=None, bot_count=1, channel_spam= None, messages_to_spam= None):
 		self.channel_spam = channel_spam
 		self.bot_count = bot_count
@@ -15,6 +16,7 @@ class DiscordRaid:
 		self.token = token
 		self.messages_to_spam = messages_to_spam
 		self.bot = commands.Bot(command_prefix= self.prefix, loop = self.loop)
+		
 
 	async def run(self):
 		@self.bot.event
@@ -30,18 +32,33 @@ class DiscordRaid:
 
 		await self.bot.start(self.token, bot=False)
 
+def bot_inviter(link, token):
+	apilink = "https://discordapp.com/api/v6/invite/" + link
+	headers={'Authorization': token}
+	bot_invite = requests.post(apilink, headers=headers)
+	# server_name = bot_invite.json()['guild']['name']
 
 def main():
 
 	menu()	
 
-	print(Style.RESET_ALL)
+
 	tokens = []
 	with open("tokens.txt", "r") as tokens_file:
 		lines = tokens_file.readlines()
 		for l in lines:
 			tokens.append(l.replace('\n', ''))
 
+	invite_bot = input("[!] Mass invite all discord tokens to server? y/n > ")
+
+	if invite_bot == "y":
+		link = input('[!] Discord Invite Link: ')
+		if len(link) > 6:
+				link = link[19:]
+		counts = 1
+		for botz in tokens:
+				bot_inviter(link,botz)
+				
 	channel_id  = int(input("[!] Enter ID of the channel you want to raid >"))
 
 
@@ -55,6 +72,7 @@ def main():
 		messages_to_spam.append(message_spam)
 
 	os.system('cls')
+
 	print(f"The following messages will be spammed to the channel id {channel_id} \n")
 
 	for mes in messages_to_spam:
@@ -87,7 +105,7 @@ def menu():
 	os.system('cls')
 	os.system('title EZ Raider [Nightfall#2512] ^| A simple discord server raider.')
 	print(f'''
-{Fore.LIGHTBLACK_EX} V0.01 Youtube Channel: NightfallGT, Discord Server: discord.gg/e8Qy8JKbUK
+{Fore.LIGHTBLACK_EX} V0.2 Youtube Channel: NightfallGT, Discord Server: discord.gg/e8Qy8JKbUK
 		{Fore.RED}
 		▄███▄   ▄▄▄▄▄▄       █▄▄▄▄ ██   ▄█ ██▄   ▄███▄   █▄▄▄▄     
 		█▀   ▀ ▀   ▄▄▀       █  ▄▀ █ █  ██ █  █  █▀   ▀  █  ▄▀     
@@ -95,7 +113,7 @@ def menu():
 		{Fore.LIGHTRED_EX}█▄   ▄▀ ▀▀▀▀▀▀       █  █  █  █ ▐█ █  █  █▄   ▄▀ █  █      
 		▀███▀                  █      █  ▐ ███▀  ▀███▀     █       
 		                      ▀      █                    ▀        
-		                            ▀      Nightfall #2512                    
+		                            ▀      Nightfall #2512     {Style.RESET_ALL}               
 ''')
 if __name__ == "__main__":
 	main()
