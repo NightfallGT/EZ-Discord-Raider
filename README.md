@@ -4,7 +4,9 @@
 ## About
 
 A script that I made that can raid discord servers. This script
-allows you to spam a text channel with any message This works on Mac and Windows.
+allows you to spam a text channel with any message 
+
+This works on Mac and Windows.
 
 
 This tool should be used for EDUCATIONAL PURPOSES only. Only
