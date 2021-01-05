@@ -77,7 +77,7 @@ def main():
 	messages_to_spam = []
 
 	while True:
-		os.system('cls')
+		clear()
 		message_spam = input("[!] Enter messages to spam [enter q to exit] >  ")
 		if message_spam == "q":
 			break
