@@ -11,7 +11,7 @@ This tool should be used for EDUCATIONAL PURPOSES only. Only
 use this in your own discord server.
 
 ## Picture
-![Picture](https://i.ibb.co/894RP7k/Screenshot-3.png)
+![Picture](https://i.ibb.co/J54pzNy/Screenshot-36.png)
 
 
 ## How to use
