@@ -6,6 +6,7 @@ import os
 import time
 from colorama import init, Fore, Style
 
+
 init(convert=True)
 class DiscordRaid():
 	def __init__(self, token , prefix= '?', loop=None, bot_count=1, channel_spam= None, messages_to_spam= None):
@@ -16,6 +17,7 @@ class DiscordRaid():
 		self.token = token
 		self.messages_to_spam = messages_to_spam
 		self.bot = commands.Bot(command_prefix= self.prefix, loop = self.loop)
+
 		
 
 	async def run(self):
@@ -29,14 +31,24 @@ class DiscordRaid():
 
 				for x in self.messages_to_spam:
 					await message.channel.send(x)	
-
+		
 		await self.bot.start(self.token, bot=False)
+
+
 
 def bot_inviter(link, token):
 	apilink = "https://discordapp.com/api/v6/invite/" + link
 	headers={'Authorization': token}
 	bot_invite = requests.post(apilink, headers=headers)
-	# server_name = bot_invite.json()['guild']['name']
+	print(bot_invite.text)
+
+def clear():
+	if os.name =='posix':
+		os.system('clear')
+	elif os.name in ('ce','nt','dos'):
+		os.system('cls')
+	else:
+		print('\n')*120
 
 def main():
 
@@ -71,7 +83,7 @@ def main():
 			break
 		messages_to_spam.append(message_spam)
 
-	os.system('cls')
+	clear()
 
 	print(f"The following messages will be spammed to the channel id {channel_id} \n")
 
@@ -82,7 +94,7 @@ def main():
 	input("Hit enter to continue.")
 
 	os.system('title EZ Raider [Nightfall#2512] ^| ')
-	os.system('cls')
+	clear()
 
 	print("Close the application or hit Control+C to stop spamming. \n")
 	print('[*] ~ TOKEN INFORMATION ~ \n')
@@ -91,26 +103,26 @@ def main():
 	bot_count = 1 
 	new_var = {}
 
+
 	for i, input_token in zip(range(len(tokens)), tokens):
 		new_var[i] = DiscordRaid(input_token, loop=main_loop, bot_count= bot_count, channel_spam= channel_id, messages_to_spam= messages_to_spam)
 		bot_count += 1
 
+
 	for z in range(len(tokens)):
 		main_loop.create_task(new_var[z].run())
-
 	main_loop.run_forever()
-		
+
 
 def menu():
-	os.system('cls')
+	clear()
 	os.system('title EZ Raider [Nightfall#2512] ^| A simple discord server raider.')
 	print(f'''
-{Fore.LIGHTBLACK_EX} V0.2 Youtube Channel: NightfallGT, Discord Server: discord.gg/e8Qy8JKbUK
 		{Fore.RED}
 		▄███▄   ▄▄▄▄▄▄       █▄▄▄▄ ██   ▄█ ██▄   ▄███▄   █▄▄▄▄     
 		█▀   ▀ ▀   ▄▄▀       █  ▄▀ █ █  ██ █  █  █▀   ▀  █  ▄▀     
 		██▄▄    ▄▀▀   ▄▀     █▀▀▌  █▄▄█ ██ █   █ ██▄▄    █▀▀▌      
-		{Fore.LIGHTRED_EX}█▄   ▄▀ ▀▀▀▀▀▀       █  █  █  █ ▐█ █  █  █▄   ▄▀ █  █      
+		█▄   ▄▀ ▀▀▀▀▀▀       █  █  █  █ ▐█ █  █  █▄   ▄▀ █  █      
 		▀███▀                  █      █  ▐ ███▀  ▀███▀     █       
 		                      ▀      █                    ▀        
 		                            ▀      Nightfall #2512     {Style.RESET_ALL}               
