@@ -48,3 +48,4 @@ Make sure you are in the same directory.
 ```
 python massleave.py
 ```
+To get the server id, right click on the server name (Top left) and click copy id.
