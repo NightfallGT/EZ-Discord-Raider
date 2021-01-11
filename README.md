@@ -15,6 +15,8 @@ use this in your own discord server.
 ## Picture
 ![Picture](https://i.ibb.co/J54pzNy/Screenshot-36.png)
 
+## Video
+https://www.youtube.com/watch?v=sczOIKM-Wr0
 
 ## How to use
 ### Get Python
@@ -34,6 +36,7 @@ file.
 ```
 pip install colorama
 pip install -U discord.py
+pip install requests
 ```
 
 ### to run the script..
