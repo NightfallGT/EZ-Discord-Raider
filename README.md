@@ -33,6 +33,7 @@ Put your discord account tokens in the tokens.txt
 file. 
 
 ### pip install these
+Open up cmd 
 ```
 pip install colorama
 pip install -U discord.py
